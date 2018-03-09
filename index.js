@@ -26,13 +26,13 @@ if(targetFile === null)
 //=====================================================
 
 const regExStartObj = /(^-{3})([0-9a-zA-Z\!\s]*)&([0-9]+)/i;
-const regExProp = /([0-9a-zA-Z_]+):\s([:{}0-9a-zA-Z\s,.-_]+)/i;
+const regExProp = /([0-9a-zA-Z_]+):\s([:{}0-9a-zA-Z\s,.-_-]+)/i;
 const parseXY = (x) => {
-    const regRs = x.match(/x:\s([0-9.-]+),\sy:\s([0-9.-]+)/i);
+    const regRs = x.match(/x:\s([0-9.-_-]+),\sy:\s([0-9.-_-]+)/i);
     if (regRs) {
         return {
-            x: parseInt(regRs[1]),
-            y: parseInt(regRs[2]),
+            x: parseFloat(regRs[1]),
+            y: parseFloat(regRs[2]),
         }
     }
     else {
