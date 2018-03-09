@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222053745300497978}
   - component: {fileID: 114306306788650404}
   m_Layer: 5
-  m_Name: Image
+  m_Name: IMG_Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114617581251934588}
   - component: {fileID: 114423080295905648}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BTN_Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,11 +336,11 @@ RectTransform:
   m_Father: {fileID: 224029674220681240}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.26700002, y: 0.65554655}
-  m_AnchorMax: {x: 0.67600006, y: 0.7034535}
-  m_AnchoredPosition: {x: 0, y: 0.5}
-  m_SizeDelta: {x: 2, y: -3}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 387.2, y: 656.9}
+  m_SizeDelta: {x: 370.94006, y: 30}
+  m_Pivot: {x: 0, y: 0}
 --- !u!224 &224810265898110298
 RectTransform:
   m_ObjectHideFlags: 1

@@ -1,1 +1,1 @@
-[{"a":1,"b":2,"c":3},2]
+[{"id":"1389893397449080","type":"GameObject","m_Name":"Logo","uiType":"IMG","m_AnchorMin":{"x":0,"y":0},"m_AnchorMax":{"x":0,"y":0},"m_AnchoredPosition":{"x":0,"y":106},"m_SizeDelta":{"x":100,"y":100},"m_Pivot":{"x":0,"y":0}},{"id":"1413723619593664","type":"GameObject","m_Name":"Play","uiType":"BTN","m_AnchorMin":{"x":0,"y":0},"m_AnchorMax":{"x":0,"y":0},"m_AnchoredPosition":{"x":387,"y":656},"m_SizeDelta":{"x":370,"y":30},"m_Pivot":{"x":0,"y":0}}]
