@@ -6,7 +6,7 @@ let targetFile = null;
 process.argv = [
     '',
     '-in',
-    './testData/Canvas.prefab'
+    './testData'
 ];
 
 const len = process.argv.length;
@@ -59,6 +59,8 @@ const whitelistProp = {
 const supportElement = [
     'BTN',
     'IMG',
+    'TXT',
+    'BG',
 ];
 
 function readNextObject(lines, index) {
@@ -101,14 +103,12 @@ function readObject(lines, index, id) {
     const length = lines.length;
     while(i < length) {
         line = lines[i].trim();
-
         //match object
         let regRs = line.match(regExStartObj);
         if(regRs) {
             rs.nextIndex = i;
             return rs;
         }
-
         //read prop
         regRs = line.match(regExProp);
         if(regRs) {            
@@ -123,7 +123,9 @@ function readObject(lines, index, id) {
     return rs;
 }
 
-fs.readFile(targetFile, (err, data) => {
+let outputName = 'out.json';
+
+function parseToJson(err, data) {
     if(err != null) {
         return console.log('Read file Error', err);
     }
@@ -150,6 +152,12 @@ fs.readFile(targetFile, (err, data) => {
             if(supportElement.some( x => x === split[0])) {
                 x['m_Name'] = split[1];
                 x['uiType'] = split[0];
+                if(split.length >= 3) {                
+                    x['func'] = split[2];
+                }
+                else {
+                    x['func'] = '';
+                }
                 return true;
             }
 
@@ -185,19 +193,27 @@ fs.readFile(targetFile, (err, data) => {
     //filter gameobject
     objs = objs.filter(x => x.type === 'GameObject');
 
-    fs.writeFileSync('./out.json', JSON.stringify(objs))
+    fs.writeFileSync('./' + outputName, JSON.stringify(objs))
 
     process.exit(1);
-});
+}
 
-
-
-// const obj = [{
-//     a: 1,
-//     b: 2,
-//     c: 3
-// }, 2]
-
-// console.log(JSON.parse('[{"a":1,"b":2,"c":3},2]'));
-
-// fs.writeFileSync('./out.json', JSON.stringify(obj))
+if(targetFile.search('.prefab') !== -1) {
+    fs.readFile(targetFile, (err, data) => {
+        outputName = targetFile;
+        parseToJson(err, data);
+    });
+} else {
+    //find if it contain .prefab
+    const folder = new File(targetFile);
+    const files = folder.list();
+    const length = files.length;
+    for(let i = 0; i < length; ++i) {
+        if(files[i].search('.prefab') !== -1) {
+            fs.readFile(files[i], (err, data) => {
+                outputName = files[i];
+                parseToJson(err, data);
+            });
+        }
+    }
+}
